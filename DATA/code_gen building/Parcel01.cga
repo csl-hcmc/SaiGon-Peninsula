@@ -1,0 +1,173 @@
+version "2019.0"
+@Group("On/Off",0)
+@Description("Bat / Tat quy tac")
+attr enable = ""
+
+@Group("Attributes")
+@Description("Dien tich o pho - m2")
+attr S =geometry.area
+
+@Description("Mat do xay dung - %")
+attr BCR=0
+
+# @Hidden
+attr mainTarget=BCR*S/100
+
+@Description("Dien tich thua dat - m2")
+attr parcelArea = 105
+
+@Description("Chieu dai thua dat - m")
+attr pacelDepth = 20
+
+@Description("Lo gioi duong noi khu - m")
+attr streetWidth = 14
+
+@Enum("Street", "Parcel")
+attr output = "Street"
+
+@Description("Optional")
+@Enum("Rule1","Rule2")
+attr rule = 
+	case 
+		 BCR >= 50
+		 : "Rule1"
+	else : "Rule2"
+
+@StartRule
+Lot -->
+	case enable == "T":
+	setback(4){all=NIL| remainder: ins}
+	else: NIL
+
+ins -->
+	case rule == "Rule1"
+		 : NNO(geometry.area)
+	else : NNO1(geometry.area)	
+
+NNO(area) -->
+	split(z)
+		{~1: remainder(max(mainTarget-(area-geometry.area),0),geometry.area,1) print(geometry.area)
+		|pacelDepth*2: block(mainTarget,1)
+		}
+NNO1(area) -->
+	split(z)
+		{~1:remainder(max(mainTarget-(area-geometry.area),0),geometry.area,5) print(area - geometry.area)
+		|pacelDepth: block(mainTarget,5) print(geometry.area)
+		}
+
+
+remainder(target,area,key) -->
+	case target == 0:
+		case key<5:
+			split(z)
+				{~1: green
+				|streetWidth: street
+				}
+		else:
+			green
+	case key<5:
+		split(z)
+			{~1: alignScopeToGeometry(yUp, key)
+				 land(target,geometry.area,key+1)
+			|streetWidth:street
+			}
+	case key <10:
+		split(z)
+			{~1: alignScopeToGeometry(yUp, key -4)
+				 land(target,geometry.area,key+1)
+			|1:street
+			}
+	else: green
+
+land(target,area,key) -->
+	case key <5:
+		split(z)
+			{~1: remainder(max(target-(area-geometry.area),0),geometry.area,key)
+			|pacelDepth*2: block(target,key)
+			}
+	else: 
+		split(z)
+			{~1: remainder(max(target-(area-geometry.area),0),geometry.area,key)
+			|pacelDepth: block(target,key)
+			}
+	
+block(target,key) -->
+	case target == 0 :
+		green
+	case geometry.area <= target:
+		case geometry.area >2000 && key ==1: 
+			split(x)
+				{pacelDepth: split(x) 
+						{~1: splitArea(z) {~parcelArea:parcel}*
+						|1:green} 
+					 report
+				|~1: split(z)
+						{~1:condition|2:center|~1:condition}
+				|pacelDepth: split(x)
+						{1:green
+						|~1: splitArea(z){~parcelArea:parcel}*}
+					 report
+				}
+		case geometry.area >1200 && (key ==2 || key ==3): 
+			split(x)
+				{~1: split(z) {~1:condition|2:center|~1:condition}
+				|20: split(x) {1:green|~1: splitArea(z) {~parcelArea:parcel}*}
+					 report
+				}
+		case key == 4:
+			split(z) {~1:condition|2:center|~1:condition}
+		else:
+			condition
+	else: 
+		case target>1200  && key < 5 :
+			splitArea(x)
+				{geometry.area-target: green
+				|~1: split(x) 
+						{~1: split(z) {~1:condition|2:center|~1:condition}
+						|pacelDepth:split(x)
+								{~1: splitArea(z){~parcelArea:parcel}*
+								|1:green}
+					 		report
+# 						|~1: split(z) {~1:condition|2:center|~1:condition} }
+						}
+# 				|geometry.area-target: green
+				}
+		case key < 5: 
+			splitArea(x)
+				{geometry.area-target: green
+				|target: split(z) {~1:condition|2:center|~1:condition}
+# 				|geometry.area-target: green
+				}
+		else: 
+			splitArea(x)
+				{target: condition
+				|geometry.area-target: green}	
+street -->  
+case scope.sz >13 && output == "Street":
+	done.
+else: NIL
+
+center --> report
+condition -->
+	case scope.sx >80 : split(x) {~1:condition|4:green report|~1:condition}
+	else: cleanBlock
+	
+cleanBlock --> 
+	splitArea(x) {~parcelArea:parcel}* report
+
+report -->
+	report("s",geometry.area)
+	NIL
+
+parcel --> 
+	case geometry.area < 70 ||
+		 scope.sx <4 ||
+		 scope.sz <4  
+	: green
+	else:  
+		case output == "Parcel" && geometry.nEdges>3:
+		Done.
+		else: NIL
+	
+green --> 
+NIL
