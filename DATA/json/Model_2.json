@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Model_2",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "OBJECTID_1": 1, "OBJECTID": 19, "Name": "5990400", "SHAPE_Leng": 8894.34, "Shape_Le_1": 8894.2871625099997, "Shape_Area": 4555417.8959 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 106.735575227, 10.728295184 ], [ 106.735573673, 10.728295193 ], [ 106.735656233, 10.742759171 ], [ 106.735657787, 10.742759162 ], [ 106.761684227, 10.742612703 ], [ 106.761600431, 10.728148926 ], [ 106.735575227, 10.728295184 ] ] ] ] } }
+]
+}

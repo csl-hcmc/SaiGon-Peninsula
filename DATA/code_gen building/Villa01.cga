@@ -1,0 +1,173 @@
+version "2019.0"
+
+@Group("On/Off",0)
+@Description("Bat / Tat quy tac")
+attr Enable = ""
+
+@Group("Attributes")
+@Description("Dien tich o pho - m2")
+attr S =geometry.area
+
+@Description("Mat do xay dung - %")
+attr BCR=0
+
+@Hidden
+attr mainTarget=BCR*S/100/0.6
+
+@Description("Dien tich thua dat - m2")
+attr parcelArea = 300
+
+@Description("Chieu dai thua dat - m")
+@Distance
+attr pacelDepth = 20
+
+@Description("Lo gioi duong noi khu - m")
+@Distance
+attr streetWidth = 14
+
+@Enum("Street", "Parcel","Footprint")
+attr output = "Street"
+
+@StartRule
+Lot -->
+	case Enable == "T":
+	setback(4){all=NIL| remainder: Villa(geometry.area)}
+	else: NIL
+
+Villa(area) -->
+	split(z)
+		{~1: Remainder(max(mainTarget-(area-geometry.area),0),geometry.area,1)
+		|pacelDepth*2: Block(mainTarget,1)
+		}
+
+Remainder(target,area,key) -->
+	case target == 0:
+		case key<5:
+			split(z)
+				{~1: Green
+				|streetWidth: street
+				}
+		else:
+			Green
+	case key<5:
+		split(z)
+			{~1: alignScopeToGeometry(yUp, key)
+				 Land(target,geometry.area,key+1)
+			|streetWidth:street
+			}
+	case key <10:
+		split(z)
+			{~1: alignScopeToGeometry(yUp, key -4)
+				 Land(target,geometry.area,key+1)
+			|1:street
+			}
+	else: Green
+
+Land(target,area,key) -->
+	case key <5:
+		split(z)
+			{~1: Remainder(max(target-(area-geometry.area),0),geometry.area,key)
+			|pacelDepth*2: Block(target,key)
+			}
+	else: 
+		split(z)
+			{~1: Remainder(max(target-(area-geometry.area),0),geometry.area,key)
+			|pacelDepth: Block(target,key)
+			}
+	
+Block(target,key) -->
+	case target == 0 :
+		Green
+	case geometry.area <= target:
+		case geometry.area >2000 && key ==1: 
+			split(x)
+				{pacelDepth: splitArea(z) {~parcelArea:CornerParcel}*
+				|~1: split(z)
+						{~1:rotateScope(0, 180, 0)Condition|~1:Condition}
+				|pacelDepth:rotateScope(0, 180, 0)splitArea(z){~parcelArea:CornerParcel}*
+				}
+		case geometry.area >1200 && (key ==2 || key ==3): 
+			split(x)
+				{~1: split(z) {~1:rotateScope(0, 180, 0)Condition(false)|~1:Condition(true)}
+				|20: rotateScope(0, 180, 0) splitArea(z) {~parcelArea:CornerParcel}*
+				}
+		case key == 4:
+			split(z) {~1:Condition|~1:Condition}
+		else:
+			Condition
+	else: 
+		case target>1200  && key < 5 :
+		rotateScope(0, 180, 0)
+			splitArea(x)
+				{~1: split(x) 
+						{pacelDepth:
+							splitArea(z){~parcelArea:CornerParcel}*
+						|~1: split(z) {~1:rotateScope(0, 180, 0) Condition|~1:Condition} }
+				|geometry.area-target: Green}
+		case key < 5: 
+		rotateScope(0, 180, 0)
+			splitArea(x)
+				{target: split(z) {~1:rotateScope(0, 180, 0)Condition(false)|~1:Condition(true)}
+				|geometry.area-target: Green}
+		else: 
+			splitArea(x)
+				{target: Condition
+				|geometry.area-target: Green}	
+street -->  
+case scope.sz >13 && output == "Street":
+	done.
+else: NIL
+Condition -->
+	splitArea(x) {~parcelArea:NormalParcel(geometry.area)}*
+Condition(x) --> 
+	splitArea(x) {~parcelArea:cleanBlock(x)}*
+	
+cleanBlock(x) --> 
+	case split.index==0 && x
+	: LeftConner(geometry.area)
+	case split.index==split.total-1 && !x
+	: RightConner(geometry.area)
+	else:NormalParcel(geometry.area)
+	
+report -->
+	report("s",geometry.area)
+	NIL
+
+CornerParcel --> 
+case split.index == 0
+	: rotateScope(0, 180, 0) RightConner(geometry.area)
+	
+case split.index == split.total-1
+: LeftConner(geometry.area)
+	else: rotateScope(0, -90, 0)
+	NormalParcel(geometry.area)
+
+RightConner(area) -->
+case output == "Footprint" :
+	setback(3) {front:front|right:front|remainder:setback(1.5) {back:side|left:side|remainder:parcel(area)}}
+case output == "Parcel" : Done
+else: NIL
+
+LeftConner(area) -->
+case output == "Footprint" :
+	 setback(3) {front:front|left:front|remainder:setback(1.5) {back:side|right:side|remainder:parcel(area)}}
+case output == "Parcel" : Done
+else: NIL
+
+NormalParcel(area) -->
+case output == "Footprint" :
+	setback(3) {front:front|remainder:setback(1.5) {left:side|right:side|remainder:setback(1) {back:back|remainder:parcel(area)}}}
+case output == "Parcel" : Done
+else: NIL
+
+front --> color(1,0,0) NIL
+side --> color(0,1,1) NIL
+back --> color(1,1,0) NIL
+
+//================================================
+# attr Height = 0
+parcel(area) -->
+	setbackToArea(area*0.6) { all : Green | remainder : parcel }
+Green --> color("#0ecb81") NIL
+
+# parcel_1 --> rectify(2) extrude(Height-4) comp(f) {top: roofHip(byHeight,4) Done.| all:Done}
