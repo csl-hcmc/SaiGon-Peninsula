@@ -24,6 +24,14 @@ PORT 15810
  - 'n' - create new map with random ids
  - ' ' - send grid data using UDP protocol
 
+Single array of 32 x 50 elements seperated by ' ' and initialize with the string 'in'
+
+Example:
+
+``
+in  10 -17 -1 35 -1 9 -1 -1 -1 38 37 35 9 9 9 10 10 10 -1 35 9 9 38 38 38 38 ...
+``
+
 
 ### NDI Receiver and Sender Tester
 
