@@ -6,6 +6,10 @@ Aurco Ids corresponding the land uses.
 
 L3-SaigonTags.pdf
 
+Requirements:
+JRE, JDK
+https://adoptium.net/
+
 
 ### GridTest
 Processing
