@@ -1,0 +1,28 @@
+# created with CityEngine 2019.0.5403 0409R (based on Esri Procedural Runtime 2.0.5403, build date: Tue 04/09/2019 10:26 AM)
+# creation date: Tue Apr  5 19:05:28 2022
+
+mtllib 20220405_SGP_GF_Border.mtl
+
+# mesh 'mesh_CityEngineMaterial_9' from geometry 'mesh_CityEngineMaterial_9'
+v -5.054 0.000 23.000
+v 17.937 0.000 10.485
+v 17.427 0.000 10.308
+v -5.011 0.000 22.521
+v 3.728 0.000 -23.000
+v 3.664 0.000 -22.126
+v -17.937 0.000 12.632
+v -17.413 0.000 12.540
+# 8 vertices
+
+vn 0.000 1.000 0.000
+# 1 vertex normal
+
+g CityEngineMaterial
+s off
+usemtl CityEngineMaterial
+f 1//1 2//1 3//1 4//1
+f 2//1 5//1 6//1 3//1
+f 5//1 7//1 8//1 6//1
+f 7//1 1//1 4//1 8//1
+# 4 faces
+

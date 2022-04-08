@@ -1,0 +1,31 @@
+# created with CityEngine 2019.0.5403 0409R (based on Esri Procedural Runtime 2.0.5403, build date: Tue 04/09/2019 10:26 AM)
+# creation date: Tue Mar 29 18:57:58 2022
+
+mtllib 20220329_UF_Border.mtl
+
+# mesh 'mesh_CityEngineMaterial_3' from geometry 'mesh_CityEngineMaterial_3'
+v -691221.307 0.000 1187305.324
+v -691199.403 0.000 1187290.306
+v -691199.959 0.000 1187290.202
+v -691221.533 0.000 1187304.994
+v -691213.671 0.000 1187269.493
+v -691213.774 0.000 1187270.049
+v -691243.602 0.000 1187290.013
+v -691243.046 0.000 1187290.117
+v -691229.334 0.000 1187310.827
+v -691229.230 0.000 1187310.271
+# 10 vertices
+
+vn 0.000 1.000 0.000
+# 1 vertex normal
+
+g CityEngineMaterial
+s off
+usemtl CityEngineMaterial
+f 1//1 2//1 3//1 4//1
+f 2//1 5//1 6//1 3//1
+f 5//1 7//1 8//1 6//1
+f 7//1 9//1 10//1 8//1
+f 9//1 1//1 4//1 10//1
+# 5 faces
+
