@@ -1,0 +1,41 @@
+# created with CityEngine 2019.0.5403 0409R (based on Esri Procedural Runtime 2.0.5403, build date: Tue 04/09/2019 10:26 AM)
+# creation date: Tue Apr  5 19:06:21 2022
+
+mtllib 20220405_SGP_GF_Base.mtl
+
+# mesh 'mesh_CityEngineMaterial_17' from geometry 'mesh_CityEngineMaterial_17'
+v 9.998 0.000 32.499
+v -20.854 0.000 -17.368
+v 20.854 0.000 25.783
+v -3.282 0.000 -13.229
+v 10.319 0.000 -21.644
+v 3.603 0.000 -32.499
+v 9.998 0.400 32.499
+v 20.854 0.400 25.783
+v -3.282 0.400 -13.229
+v 10.319 0.400 -21.644
+v 3.603 0.400 -32.499
+v -20.854 0.400 -17.368
+# 12 vertices
+
+vn 0.000 -1.000 0.000
+vn 0.000 1.000 0.000
+vn 0.526 0.000 0.850
+vn 0.850 0.000 -0.526
+vn -0.526 0.000 -0.850
+vn -0.850 0.000 0.526
+# 6 vertex normals
+
+g CityEngineMaterial
+s off
+usemtl CityEngineMaterial
+f 3//1 1//1 2//1 6//1 5//1 4//1
+f 7//2 8//2 9//2 10//2 11//2 12//2
+f 1//3 3//3 8//3 7//3
+f 3//4 4//4 9//4 8//4
+f 4//3 5//3 10//3 9//3
+f 5//4 6//4 11//4 10//4
+f 6//5 2//5 12//5 11//5
+f 2//6 1//6 7//6 12//6
+# 8 faces
+

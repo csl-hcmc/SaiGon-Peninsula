@@ -1,0 +1,3 @@
+File name				x | y | z
+20220326_SGP_Noninteractive_0.fbx	0 | 0 | 0
+20220326_SGP_Interactive_0.fbx		-590.174 | 0 | -131.862
