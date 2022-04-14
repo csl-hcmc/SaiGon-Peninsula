@@ -7,16 +7,20 @@ public class testLoadResources : MonoBehaviour
 {
 
     private string[] data;
-    public GameObject KhoiDe;
+    public GameObject footPrint;
     private float kcx = 0f;
     private float kcy = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        //path text file
         string path = Application.dataPath + "/log.txt";
+        //read data in text file
         data = File.ReadAllLines(path);
+        //turn on highRise
         highRise();
+        //draw heigh highrise
         drawHeigh();
     }
 
@@ -53,6 +57,8 @@ public class testLoadResources : MonoBehaviour
             readAllFileTxt();
         }
     }
+    // test
+    //load file
     private void loadFile()
     {
         GameObject goFather = this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
@@ -62,6 +68,7 @@ public class testLoadResources : MonoBehaviour
             //  child.transform.parent = goFather.transform;
         }
     }
+    //read text file
     private void readFileTxt()
     {
 
@@ -71,24 +78,36 @@ public class testLoadResources : MonoBehaviour
             Debug.Log(data[i].Substring(data[i].LastIndexOf(" ") + 1));
         }
     }
+    //draw heigh 
+    // load object from resources folder and instantiate
     private void drawHeigh()
     {
+        //calculator distance
         Calculator(4, 36);
+        // draw footprint
         for (int value = 0; value < 31; value++)
         {
+            //set footprint = 4
             int p = 4;
-            int indexKhoiDe = int.Parse(data[value].Substring(data[value].LastIndexOf(" ") + 1));
-            if (indexKhoiDe != 100)
+            //get index from text file. index = 100 defaults is 0
+            int indexFootPrint = int.Parse(data[value].Substring(data[value].LastIndexOf(" ") + 1));
+            if (indexFootPrint != 100)
             {
-                GameObject parentKhoiDe = KhoiDe.gameObject.transform.GetChild(indexKhoiDe).gameObject;
-                if (parentKhoiDe.transform.childCount < 2)
+                //assign father object
+                GameObject parentFootPrint = footPrint.gameObject.transform.GetChild(indexFootPrint).gameObject;
+                if (parentFootPrint.transform.childCount < 2)
                 {
                     for (int n = 0; n < p; n++)
                     {
+                        //distance floor
                         float yValue =kcx * n;
-                        Vector3 positionPrefab = parentKhoiDe.transform.position + new Vector3(0f, yValue, 0f);
-                        string prefabDe = parentKhoiDe.transform.GetChild(0).name;
-                        GameObject child = Instantiate(Resources.Load(prefabDe) as GameObject, parentKhoiDe.transform);
+                        //set position
+                        Vector3 positionPrefab = parentFootPrint.transform.position + new Vector3(0f, yValue, 0f);
+                        //Get prefab footprint's name
+                        string prefabFootprint = parentFootPrint.transform.GetChild(0).name;
+                        //instantiate footprint
+                        GameObject child = Instantiate(Resources.Load(prefabFootprint) as GameObject, parentFootPrint.transform);
+                        //set position footprint
                         child.transform.position = positionPrefab;
                     }
                 }
@@ -98,21 +117,29 @@ public class testLoadResources : MonoBehaviour
         {
             // Debug.Log("vao day nua");
             //int k = Random.Range(10, 60);
+            //set heigh building
             int k = 36;
+            //assign father object
             GameObject parentNew = this.gameObject.transform.GetChild(i).gameObject.transform.GetChild(1).gameObject;
             Debug.Log("name: "+ parentNew.name + " , position: "+ parentNew.transform.position);
+            //delete all object/prefab in new parent
             deleteall(parentNew);
             for (int j = 0; j < k; j++)
             {
-                int indexKhoiDe = int.Parse(data[i].Substring(data[i].LastIndexOf(" ") + 1));
+                //int indexKhoiDe = int.Parse(data[i].Substring(data[i].LastIndexOf(" ") + 1));
+                //distance floor
                 float yValue = kcy * j;
-
+                //Position prefab
                 Vector3 positionPrefab = parentNew.transform.position + new Vector3(0f, yValue, 0f);
-                int dodai = data[i].LastIndexOf(" ") - (data[i].LastIndexOf(")") + 2);
-                string prefabName = data[i].Substring(data[i].LastIndexOf(")") + 2, dodai);
+                //get name length in text file
+                int nameLength = data[i].LastIndexOf(" ") - (data[i].LastIndexOf(")") + 2);
+                //get name in text file
+                string prefabName = data[i].Substring(data[i].LastIndexOf(")") + 2, nameLength);
                 if (prefabName != "newModel542")
                 {
+                    //instantiate floor
                     GameObject child = Instantiate(Resources.Load(prefabName) as GameObject, parentNew.transform);
+                    //set position prefab
                     child.transform.position = positionPrefab;
                 }
             }
@@ -120,17 +147,22 @@ public class testLoadResources : MonoBehaviour
         }
     }
 
+    //draw medium
     private void drawHeighMedium()
     {
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
+            //set new father
             GameObject parentNew = this.gameObject.transform.GetChild(i).gameObject.transform.GetChild(2).gameObject;
+            //random floor
             int k = Random.Range(10, 60);
+            //delete all obejct
             deleteall(parentNew);
             for (int j = 0; j < k; j++)
             {
                 float yValue = 0.8f * j;
                 Vector3 positionPrefab = parentNew.transform.position + new Vector3(0f, yValue, 0f);
+                //instantiate floor
                 GameObject child = Instantiate(Resources.Load("Custom/newModel542 100Mid") as GameObject, parentNew.transform);
                 child.transform.position = positionPrefab;
 
@@ -138,6 +170,7 @@ public class testLoadResources : MonoBehaviour
         }
     }
 
+    //turn off all object
     private void turnoffall(GameObject go)
     {
         for (int i = 0; i < go.transform.childCount; i++)
@@ -145,6 +178,7 @@ public class testLoadResources : MonoBehaviour
             go.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
+    //destroy all object
     private void deleteall(GameObject go)
     {
         for (int i = 0; i < go.transform.childCount; i++)
@@ -152,6 +186,7 @@ public class testLoadResources : MonoBehaviour
             Destroy(go.transform.GetChild(i).gameObject);
         }
     }
+    //turn on lowrise
     private void lowRise()
     {
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
@@ -160,6 +195,7 @@ public class testLoadResources : MonoBehaviour
             this.gameObject.transform.GetChild(i).transform.GetChild(3).gameObject.SetActive(true);
         }
     }
+    //turn on midrise
     private void midRise()
     {
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
@@ -168,6 +204,7 @@ public class testLoadResources : MonoBehaviour
             this.gameObject.transform.GetChild(i).transform.GetChild(2).gameObject.SetActive(true);
         }
     }
+    //turn on highrise
     private void highRise()
     {
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
@@ -176,6 +213,7 @@ public class testLoadResources : MonoBehaviour
             this.gameObject.transform.GetChild(i).transform.GetChild(1).gameObject.SetActive(true);
         }
     }
+    //read text file
     private void readAllFileTxt()
     {
 
@@ -191,8 +229,8 @@ public class testLoadResources : MonoBehaviour
             //Debug.Log(data[i].Substring(data[i].LastIndexOf(" ") + 1));
         }
     }
-    //x so tang de
-    //y so tang toa nha
+    //x number footprint
+    //y number floor
     private void Calculator(int x, int y)
     {
         kcx = 139 / (x + (7f / 12f) * y);
