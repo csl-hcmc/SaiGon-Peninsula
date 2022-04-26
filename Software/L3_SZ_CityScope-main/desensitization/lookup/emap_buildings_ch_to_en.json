@@ -1,0 +1,30 @@
+{
+    "BLDG_USE_NAME": {
+        "住宅": "Residence",
+        "None": null,
+		"null": null,
+        "办公楼,住宅": "Office, Residence",
+        "工业、仓库用房": "Industry, Storehouse",
+        "商业、金融和信息用房": "Commercial & Business & Information",
+        "其他用房": "Others",
+        "商业、金融和信息用房,住宅": "Commercial & Business & Information, Residence",
+        "办公楼": "Office",
+        "其他用房,住宅": "Others, Residence"
+    },
+    "BLDG_USESTATE_NAME": {
+        "商服": "Commercial & Service",
+        "综合": "Comprehensive",
+        "住宅": "Residence",
+        "商住": "Residence & Commercial",
+        "其他": "Others",
+        "办公": "Office",
+        "None": null,
+		"null": null,
+        "居住配套": "Residential Facility",
+        "交通": "Transportation",
+        "市政": "Infrastructure",
+        "商业": "Commercial",
+        "公共配套": "Public Facility",
+        "临时建筑物": "Temporary Building"
+    }
+}

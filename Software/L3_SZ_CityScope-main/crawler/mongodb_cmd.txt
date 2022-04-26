@@ -1,0 +1,61 @@
+show dbs
+show collections
+
+use L3_SZ_CityScope
+
+db.house_detailed_second_hand_lianjia.find({}).count()
+db.house_summary_second_hand_lianjia.find({get_detailed: true}).count()
+
+
+drop duplicates for collect = house_detailed_second_hand_lianjia based on id = url
+===================================================================================
+db.house_detailed_second_hand_lianjia.aggregate([
+ {
+     "$group": {
+         _id: {url: "$url"},
+         dups: { $addToSet: "$_id" } ,
+         count: { $sum : 1 }
+     }
+ },
+ {
+     "$match": {
+         count: { "$gt": 1 }
+     }
+ }
+]).forEach(function(doc) {
+   doc.dups.shift();
+   db.house_detailed_second_hand_lianjia.remove({
+       _id: {$in: doc.dups}
+   });
+})
+
+
+drop duplicates for collect = house_summary_second_hand_lianjia based on id = url
+===================================================================================
+db.house_summary_second_hand_lianjia.aggregate([
+ {
+     "$group": {
+         _id: {url: "$url"},
+         dups: { $addToSet: "$_id" } ,
+         count: { $sum : 1 }
+     }
+ },
+ {
+     "$match": {
+         count: { "$gt": 1 }
+     }
+ }
+]).forEach(function(doc) {
+   doc.dups.shift();
+   db.house_summary_second_hand_lianjia.remove({
+       _id: {$in: doc.dups}
+   });
+})
+
+
+# rename
+=================================
+db.block_lianjia.renameCollection("block_lianjia_futian")
+db.house_detailed_second_hand_lianjia.renameCollection("house_detailed_second_hand_lianjia_futian")
+db.house_summary_second_hand_lianjia.renameCollection("house_summary_second_hand_lianjia_futian")
+db.page_url_second_hand_lianjia.renameCollection("page_url_second_hand_lianjia_futian")

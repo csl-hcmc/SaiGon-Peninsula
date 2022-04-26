@@ -1,0 +1,108 @@
+{
+    "SEX": {
+        "1": "Male",
+        "2": "Female"
+    },
+    "NATIONID": {
+        "1.0": "Han",
+        "2.0": "Mongol",
+        "3.0": "Hui",
+        "4.0": "Zang",
+        "5.0": "Uygur",
+        "6.0": "Miao",
+        "7.0": "Others",
+        "8.0": "Zhuang",
+        "9.0": "Others",
+        "10.0": "Others",
+        "11.0": "Others",
+        "12.0": "Others",
+        "13.0": "Others",
+        "14.0": "Others",
+        "15.0": "Others",
+        "16.0": "Others",
+        "17.0": "Others",
+        "18.0": "Others",
+        "19.0": "Others",
+        "22.0": "Others",
+        "24.0": "Others",
+        "25.0": "Others",
+        "27.0": "Others",
+        "30.0": "Others",
+        "32.0": "Others",
+        "35.0": "Others",
+        "38.0": "Others",
+        "47.0": "Others",
+        "49.0": "Others",
+        "null": null
+    },
+    "MARRYID": {
+        "1.0": "Single",
+        "2.0": "Married",
+        "3.0": "Widowed",
+        "4.0": "Divorced",
+        "5.0": "Unknown",
+        "9.0": "Unknown"
+    },
+    "EDULEVELID": {
+        "0.0": "PhD",
+        "1.0": "Master",
+        "2.0": "Bachlor",
+        "3.0": "Vocational College",
+        "4.0": "Secondary Vocational School",
+        "5.0": "High Middle School",
+        "6.0": "Junior Middle School",
+        "7.0": "Below Junior Middle School",
+        "8.0": "Compulsory Education Aged (Student)",
+        "9.0": "Preschool Aged"
+    },
+    "TRADEID": {
+        "1.0": "Industry",
+        "2.0": "Commercial",
+        "3.0": "Service",
+        "4.0": "Transportation",
+        "5.0": "Agriculture",
+        "6.0": "Construction",
+        "7.0": "Others",
+        "8.0": "Unemployed",
+        "9.0": "Non-labor Aged"
+    },
+    "DOMICILETYPE": {
+        "1.0": "Hotel",
+        "2.0": "Live in Others' Residence",
+        "3.0": "Live at Workplace",
+        "4.0": "Live at Workplace",
+        "5.0": "Rented House/Appartment",
+        "6.0": "Puchased House/Appartment",
+        "9.0": "Others"
+    },
+    "BIDEFASHION": {
+        "1.0": "Live Alone",
+        "2.0": "Live with Family",
+        "3.0": "Live with Friends",
+        "4.0": "Live with Community",
+        "9.0": "Others"
+    },
+    "LEASEREASONID": {
+        "1.0": "For Employment",
+        "2.0": "For Farming",
+        "3.0": "For Commercial Affairs",
+        "4.0": "For Service",
+        "5.0": "For Business Travel",
+        "6.0": "For Training",
+        "7.0": "For Health Caring",
+        "8.0": "For Working as a Housekeeper",
+        "9.0": "Seeking Help from Friends/Relatives",
+        "10.0": "Visiting Friends/Relatives",
+        "11.0": "Sightseeing",
+        "12.0": "Others",
+        "13.0": "Others",
+        "14.0": "Others"
+    },
+    "BL_BLDG_USE_1": {
+        "综合": "Comprehensive",
+        "商住": "Commercial & Residence",
+        "住宅": "Residence",
+        "其他": "Others",
+        "办公": "Office"
+    }
+}
