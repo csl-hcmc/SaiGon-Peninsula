@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+    <meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+    <title>深圳CityScope香蜜湖地区百度地图</title>
+    <!--引用百度地图API-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hZiP2M54rUBfKPjX8WvMVibavZVsNY8Q"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  </head>
+  
+  <body>
+    <!--百度地图容器-->
+    <div style="width:1300px;height:700px;border:#ccc solid 1px;font-size:12px" id="map"></div>
+	<!-- <input type="file" value="选择文件" id="file_selector", style="display: none"></input> -->
+	<input type="file" value="选择文件" id="file_selector"></input>
+	<!-- <input type="button" value="选择文件" id="fakeBrowse" onclick="HandleBrowseClick();"/> -->
+	<button type="button" id="show_hide" >显示/隐藏</button>
+	<button type="button" id="remove_" >清除</button>
+	<button type="button" id="center_" >回到中心</button>
+	<input type="checkbox" id="random_color" value="random_color" />随机颜色<br />
+  </body>
+  <script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+      addMapControl();//向地图添加控件
+      <!-- addMapOverlay();//向地图添加覆盖物 -->
+    }
+    function createMap(){ 
+      map = new BMap.Map("map"); 
+      map.centerAndZoom(new BMap.Point(114.047233,22.5481),16);
+    }
+    function setMapEvent(){
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+      target.addEventListener("click",function(){
+        target.openInfoWindow(window);
+      });
+    }
+    function addMapOverlay(){
+	}
+	
+	function randomHexColor() { 
+		 var hex = Math.floor(Math.random() * 16777216).toString(16); 
+		 while (hex.length < 6) { 
+		  hex = '0' + hex;
+		 }
+		 return '#' + hex; 
+	}
+	
+	$(function(){
+		$('#center_').click(function(){
+			map.centerAndZoom(new BMap.Point(114.047233,22.5481),16);
+		})
+	})
+	
+	$(function() {
+		$("#show_hide").click(function() {
+			$("path").toggle();
+			$("span.BMap_Marker").toggle();
+			$("canvas").toggle();
+		}
+		)
+	})
+	$(function() {
+		$("#remove_").click(function() {
+			<!-- location.reload(); -->
+			$("path").remove();
+			$("span.BMap_Marker").remove();
+			$("canvas").remove();
+			$("#file_selector").val('')
+		}
+		)
+	})
+	
+	$(function () {
+		$("#file_selector")
+			.click()
+			.on('change', event => {
+				let thisColor = "red";
+				if (document.getElementById('random_color').checked) {
+					thisColor = randomHexColor();
+				}
+				<!-- location.reload(); -->
+				let file = event.target.files[0];
+				let file_reader = new FileReader();
+				file_reader.onload = () => {
+					let fc = file_reader.result;
+					<!-- fc = fc.replace(/\\n/g, "\\n")   -->
+						   <!-- .replace(/\\'/g, "\\'") -->
+						   <!-- .replace(/\\"/g, '\\"') -->
+						   <!-- .replace(/\\&/g, "\\&") -->
+						   <!-- .replace(/\\r/g, "\\r") -->
+						   <!-- .replace(/\\t/g, "\\t") -->
+						   <!-- .replace(/\\b/g, "\\b") -->
+						   <!-- .replace(/\\f/g, "\\f"); -->
+					let data = JSON.parse(fc);
+					if (data['features'].length === 0) {
+						alert('本文件中无任何地理要素')
+						return
+					}
+					var points = [];
+					for (var feature of data['features']) {
+						if (feature['geometry']['type'] === 'MultiPoint') {
+							for (var point_coord of feature['geometry']['coordinates']) {
+								var point = new BMap.Point(
+									point_coord[0], point_coord[1]
+								);  
+								points.push(point);
+							} 
+							<!-- var marker = new BMap.Marker(point);        -->
+							<!-- map.addOverlay(marker);                      -->
+						} else if (feature['geometry']['type'] === 'Point') {
+							var point = new BMap.Point(
+								feature['geometry']['coordinates'][0], 
+								feature['geometry']['coordinates'][1]
+							);   
+							points.push(point);
+							<!-- var marker = new BMap.Marker(point);     -->
+							<!-- map.addOverlay(marker);           -->
+						} else if (feature['geometry']['type'] === 'MultiPolygon') {
+							for (var polygon_coords of feature['geometry']['coordinates']) {
+								let coord_list = [];
+								for (var coord of polygon_coords[0]) {
+									coord_list.push(new BMap.Point(coord[0], coord[1]));
+								}
+								var polygon = new BMap.Polygon(coord_list, {
+									strokeColor:thisColor, strokeWeight:5, strokeOpacity:0.5,
+									fillColor:thisColor, fillColorOpacity:0.4
+								});
+								map.addOverlay(polygon);
+							}
+						} else if (feature['geometry']['type'] === 'MultiLineString') {
+							for (var line_coords of feature['geometry']['coordinates']) {
+								let coord_list = [];
+								for (var coord of line_coords) {
+									coord_list.push(new BMap.Point(coord[0], coord[1]));
+								}
+								var polyline = new BMap.Polyline(coord_list, {
+									strokeColor:thisColor, strokeWeight:5, strokeOpacity:0.5
+								});
+								map.addOverlay(polyline); 
+							}	
+						} else {
+							alert(`Invalid geometry type: ${feature['geometry']['type']}`)
+						}
+					}
+					if (points.length > 0) {
+						var options = {
+							size: 5,
+							shape: 'circle',
+							<!-- color: '#d340c3', -->
+							color: thisColor
+						}
+						var pointCollection = new BMap.PointCollection(points, options);
+						map.addOverlay(pointCollection);
+					}
+				};
+				file_reader.readAsText(file, 'UTF-8');
+			})
+	})
+	
+    //向地图添加控件
+    function addMapControl(){
+      var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+      scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+      map.addControl(scaleControl);
+      var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+      map.addControl(navControl);
+      var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+      map.addControl(overviewControl);
+    }
+    var map;
+      initMap();
+  </script>
+</html>

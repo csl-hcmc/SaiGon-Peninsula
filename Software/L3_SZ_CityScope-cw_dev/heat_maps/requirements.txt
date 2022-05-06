@@ -1,0 +1,13 @@
+jenkspy
+pandas
+numpy
+plotly==5.3.1
+dash==1.21.0
+pyproj
+Flask
+Pillow
+geopandas
+scipy
+shapely
+matplotlib
+kaleido

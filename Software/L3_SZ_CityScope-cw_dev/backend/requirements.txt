@@ -1,0 +1,11 @@
+numpy
+pandas
+matplotlib
+h3pandas
+shapely
+numpyencoder
+scipy
+pyproj
+scikit-learn==1.0.2
+paho-mqtt
+pdpbox==0.2.0

@@ -1,0 +1,4 @@
+(1) converting  all geofiles from CRS-2000 to CRS-WGS84 via QGIS (Reproject layer in batch mode), and putting them in a _wgs84 folder
+(2) extracting data inside research area using clip_by_space, and putting them in a _RA folder
+(3) converting CRS from WGS84 to biased one using coord_converter, and putting them in a _biased folder
+(4) modifying attributes (including translation from CH to EN) using filter_attribute, and putting them in a _censored folder 
