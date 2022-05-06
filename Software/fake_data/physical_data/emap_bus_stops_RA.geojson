@@ -1,0 +1,432 @@
+{
+    "type": "FeatureCollection",
+    "name": "emap_bus_stops_RA",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "fed4514ab203a198b7547f5326f1c2fa",
+                "LINE_ID": "4503959e340404c96d7d1f3bd3d42b01",
+                "SEQID": "56"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.99358366928175,
+                    22.566375567194868
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "86606a0750cfd31f0781e6e8ae4febd9",
+                "LINE_ID": "0ff331256abc924f11719a14ce875042",
+                "SEQID": "20"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.99349694470381,
+                    22.565986501891494
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "009f0271d10a59fccbdc3a37a314259f",
+                "LINE_ID": "5d8c389c02fad054a4a094f87252db8e",
+                "SEQID": "2"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.99605270173508,
+                    22.557257305462368
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "3785f832c8c22f6c96ba753ff2caadf6",
+                "LINE_ID": "dc31708cd2ab5d74468b44b22b741638",
+                "SEQID": "16"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.99571728998339,
+                    22.556729482143425
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "2b16d10c8e03ec153a6e87ddaccea5e2",
+                "LINE_ID": "8a3423115af0f84f3f07cfdf1a003287",
+                "SEQID": "1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.00356173606758,
+                    22.529336577048355
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "21c27f0c24d203dd0d772e57856f9d3d",
+                "LINE_ID": "dc31708cd2ab5d74468b44b22b741638",
+                "SEQID": "4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.00252795210307,
+                    22.530128879782385
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "e478ace3761925c4bf9b9b5442504ef3",
+                "LINE_ID": "b5f3ca128e9446794550692fe5e02b60",
+                "SEQID": "34"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.02802613752313,
+                    22.542422511495694
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "2873b540a316c13f952b7ecb66a25c73",
+                "LINE_ID": "304359ad8ba867c3821b0eaaa9bfe652",
+                "SEQID": "10"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.02769735591185,
+                    22.541072337357935
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "3d6e2aa3525d913fe9f9afee08ed0aef",
+                "LINE_ID": "f9595a27a0c4daa123d4e63b8eff3779",
+                "SEQID": "6"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.99707989531055,
+                    22.497994232551957
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "21c27f0c24d203dd0d772e57856f9d3d",
+                "LINE_ID": "304359ad8ba867c3821b0eaaa9bfe652",
+                "SEQID": "17"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.99703290393911,
+                    22.497186839152718
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "4be5778698ac3fffef013935e8729aef",
+                "LINE_ID": "20bd38e41c39f1002ee0b576d9050987",
+                "SEQID": "18"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.02847352964663,
+                    22.50701870297548
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "90c069e69d6c33aa2d5083a7bfa74a3e",
+                "LINE_ID": "b532b3cc355b17fb93c1a84bb2c56b43",
+                "SEQID": "25"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.02830883713962,
+                    22.50627680458947
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "d26c2a3d70117600d4220f3284b6ace8",
+                "LINE_ID": "5d8c389c02fad054a4a094f87252db8e",
+                "SEQID": "31"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.03020818816182,
+                    22.521020121268485
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "6a9ab144fb5249f02c6dc56f09fa895d",
+                "LINE_ID": "0ff331256abc924f11719a14ce875042",
+                "SEQID": "7"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.03127252295933,
+                    22.519986494894486
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "965cd0f962e747befd8247e844e82f75",
+                "LINE_ID": "f39d9bdfb2ab2479212ddb61315d00cb",
+                "SEQID": "22"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.99842357286111,
+                    22.53128134793654
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "160df531549620557c16f53146fbe474",
+                "LINE_ID": "1e0231d10b91f50919bed64ddb04b428",
+                "SEQID": "51"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.99914109681839,
+                    22.530656995719866
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "30738d3cf231a26ff7dd7043375900c8",
+                "LINE_ID": "bd873212fc891fa4fe44e182ac1ce3e9",
+                "SEQID": "20"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.0364845107614,
+                    22.54346598968268
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "f55e632aa27b35e6ee8c132c789a3add",
+                "LINE_ID": "2afaa4d3840ba9b5151e72e00dda8b59",
+                "SEQID": "36"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.03615564442808,
+                    22.542115833105225
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "90c069e69d6c33aa2d5083a7bfa74a3e",
+                "LINE_ID": "efb7ac660cf839e5578b4163e6efe7ed",
+                "SEQID": "17"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.01429990982567,
+                    22.498904115447548
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "488dde0f6d521a6d3208f789e2c86e37",
+                "LINE_ID": "1462e95d65b45fb548914a1911f9495c",
+                "SEQID": "36"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.01446884360865,
+                    22.498764299653338
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "8537b1e915a36b85f34e39676df879c7",
+                "LINE_ID": "c99162172677e6a5e053c89f002f809c",
+                "SEQID": "1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.99245898634426,
+                    22.490967693376597
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "c60165cb53c97fa59ef9bcdb3d2c35a2",
+                "LINE_ID": "601c95ebb8775d963db2cf88b042f4d6",
+                "SEQID": "17"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.99248242706798,
+                    22.490739300054955
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "c2323086b0ffc1e67f47588c5ae92e62",
+                "LINE_ID": "121f025c81a01aa3307620c7a0003c0b",
+                "SEQID": "13"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.037083049806,
+                    22.562819747431213
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "c2323086b0ffc1e67f47588c5ae92e62",
+                "LINE_ID": "580ca161b2df44585434d9da71fd2d53",
+                "SEQID": "20"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.037589427868,
+                    22.561700157292936
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "e29f5ddc9556fc34862df542dd22873d",
+                "LINE_ID": "3b3df81e2fd5eed5850cfa5cbc040d2e",
+                "SEQID": "24"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.02699783781324,
+                    22.490672350598278
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "a839021cdbe9350da7f24027ac92b8d2",
+                "LINE_ID": "d70dcf45899c232a540fa88c8841325d",
+                "SEQID": "51"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.02713048921964,
+                    22.490223378489375
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "7b41a4be8831dde27789edd3de335c49",
+                "LINE_ID": "32f21b2daeb2dfd83c138e5dbfd3e022",
+                "SEQID": "3"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.01073489165809,
+                    22.494805091570772
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STOP_ID": "b2d87c3276aca038bb912150e3370668",
+                "LINE_ID": "d30770f49424e313aa29820e9ac53d88",
+                "SEQID": "5"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.01103971191955,
+                    22.494479592635198
+                ]
+            }
+        }
+    ],
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    }
+}
