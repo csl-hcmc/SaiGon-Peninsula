@@ -1,0 +1,20 @@
+{
+    "BLDG_USAGE": {
+        "居住配套": "Residential Facility",
+        "市政设施": "Infrastructure",
+        "公共设施": "Public Facility",
+        "仓储": "Storehouse",
+        "交通": "Transportation",
+        "居住": "Residence",
+        "null": null,
+        "私宅": "Residence",
+        "办公": "Office",
+        "商业服务业": "Commercial and Service",
+        "商服": "Commercial and Service",
+        "公共配套": "Public Facility",
+        "市政": "Infrastructure",
+        "工业": "Industry",
+        "特殊": "Special",
+        "其他": "Others"
+    }
+}
